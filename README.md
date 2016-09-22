@@ -46,6 +46,10 @@ namespace HvA.API.Demo
                     Console.WriteLine($"{beginDate:ddd dd/MM HH:mm} - {endDate:dd/MM HH:mm}: " + timetableItem.ActivityDescription);
                 }
             }
+            else
+            {
+                Console.WriteLine("Couldn't sign in, wrong credentials specified.");
+            }
 
             await client.SignOutAsync();
         }

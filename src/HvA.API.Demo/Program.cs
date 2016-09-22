@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
-using HvA.API.Extensions;
-using HvA.API.Util;
+using HvA.API.NetStandard1;
+using HvA.API.NetStandard1.Util;
+using HvA.API.NetStandard1.Extensions;
 
 namespace HvA.API.Demo
 {
@@ -9,15 +10,15 @@ namespace HvA.API.Demo
     {
         public static void Main(string[] args)
         {
-            Run("username", "password").GetAwaiter().GetResult();
+            Run(args).GetAwaiter().GetResult();
 
             Console.WriteLine("Press any key to exit.");
             Console.ReadLine();
         }
 
-        private static async Task Run(string username, string password)
+        private static async Task Run(string[] args)
         {
-            var client = new HvAClient(username, password);
+            var client = new HvAClient(args[0], args[1]);
 
             if (await client.SignInAsync())
             {
@@ -30,6 +31,10 @@ namespace HvA.API.Demo
 
                     Console.WriteLine($"{beginDate:ddd dd/MM HH:mm} - {endDate:dd/MM HH:mm}: " + timetableItem.ActivityDescription);
                 }
+            }
+            else
+            {
+                Console.WriteLine("Couldn't sign in, wrong credentials specified.");
             }
 
             await client.SignOutAsync();

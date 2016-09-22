@@ -1,4 +1,4 @@
-﻿namespace HvA.API
+﻿namespace HvA.API.NetStandard1
 {
     internal class Configuration
     {

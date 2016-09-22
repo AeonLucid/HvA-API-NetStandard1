@@ -4,13 +4,14 @@
     "emitEntryPoint": true
   },
   "dependencies": {
-    "HvA.API": {
-      "target": "project"
-    }
+
   },
   "frameworks": {
     "netcoreapp1.0": {
       "dependencies": {
+        "HvA.API.NetStandard1": {
+          "target": "project"
+        },
         "Microsoft.NETCore.App": {
           "type": "platform",
           "version": "1.0.1"

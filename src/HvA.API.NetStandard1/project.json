@@ -1,0 +1,23 @@
+﻿{
+  "packOptions": {
+    "tags": [ "Hogeschool van Amsterdam", "Hogeschool van Amsterdam API", "HvA", "HvA API" ],
+    "owners": [ "AeonLucid" ],
+    "iconUrl": "http://i.imgur.com/7vJxPxu.png",
+    "projectUrl": "https://github.com/AeonLucid/HvA-API-NetStandard1",
+    "licenseUrl": "https://github.com/AeonLucid/HvA-API-NetStandard1/blob/master/LICENSE.md",
+    "requireLicenseAcceptance": false,
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/AeonLucid/HvA-API-NetStandard1"
+    }
+  },
+  "supports": {},
+  "dependencies": {
+    "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
+    "NETStandard.Library": "1.6.0",
+    "Newtonsoft.Json": "9.0.1"
+  },
+  "frameworks": {
+    "netstandard1.1": {}
+  }
+}

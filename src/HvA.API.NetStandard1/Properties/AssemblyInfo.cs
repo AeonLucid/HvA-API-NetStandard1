@@ -4,11 +4,11 @@ using System.Reflection;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("HvA.API")]
+[assembly: AssemblyTitle("HvA.API.NetStandard1")]
 [assembly: AssemblyDescription("A C# API to authenticate with and request data from the Hogeschool van Amsterdam.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("HvA.API")]
+[assembly: AssemblyProduct("HvA.API.NetStandard1")]
 [assembly: AssemblyCopyright("Copyright © AeonLucid 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

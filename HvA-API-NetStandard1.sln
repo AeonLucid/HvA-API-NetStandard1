@@ -12,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "HvA.API.Demo", "src\HvA.API.Demo\HvA.API.Demo.xproj", "{8A62A665-B82E-45BF-A48B-7236FA50E7F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HvA.API", "src\HvA.API\HvA.API.csproj", "{CC6E7FE2-1165-4A38-9034-A74F6F02C726}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HvA.API.NetStandard1", "src\HvA.API.NetStandard1\HvA.API.NetStandard1.csproj", "{CC6E7FE2-1165-4A38-9034-A74F6F02C726}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

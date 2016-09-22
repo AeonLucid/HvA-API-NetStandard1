@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace HvA.API.Data
+namespace HvA.API.NetStandard1.Data
 {
     public class Absentee
     {

@@ -1,7 +1,7 @@
 ﻿using System;
-using HvA.API.Extensions;
+using HvA.API.NetStandard1.Extensions;
 
-namespace HvA.API.Util
+namespace HvA.API.NetStandard1.Util
 {
     public static class DateTimeHelper
     {

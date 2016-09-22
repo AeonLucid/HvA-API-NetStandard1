@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using HvA.API.Data;
-using HvA.API.Util;
+using HvA.API.NetStandard1.Data;
+using HvA.API.NetStandard1.Util;
 using Newtonsoft.Json;
 
-namespace HvA.API
+namespace HvA.API.NetStandard1
 {
     public class HvAClient : IDisposable
     {

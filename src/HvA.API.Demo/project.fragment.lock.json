@@ -1,17 +1,17 @@
 {
   "version": 2,
   "exports": {
-    "HvA.API/1.0.0": {
+    "HvA.API.NetStandard1/1.0.0": {
       "type": "project",
       "framework": ".NETStandard,Version=v1.1",
       "compile": {
-        "bin/Debug/HvA.API.dll": {}
+        "bin/Debug/HvA.API.NetStandard1.dll": {}
       },
       "runtime": {
-        "bin/Debug/HvA.API.dll": {}
+        "bin/Debug/HvA.API.NetStandard1.dll": {}
       },
       "contentFiles": {
-        "bin/Debug/HvA.API.pdb": {
+        "bin/Debug/HvA.API.NetStandard1.pdb": {
           "buildAction": "None",
           "codeLanguage": "any",
           "copyToOutput": true

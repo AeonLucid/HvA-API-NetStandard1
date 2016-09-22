@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace HvA.API.Extensions
+namespace HvA.API.NetStandard1.Extensions
 {
     public static class DateTimeExtensions
     {
