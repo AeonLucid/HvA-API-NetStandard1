@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "HvA.API.Demo", "src\HvA.API.Demo\HvA.API.Demo.xproj", "{8A62A665-B82E-45BF-A48B-7236FA50E7F6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HvA.API", "src\HvA.API\HvA.API.csproj", "{CC6E7FE2-1165-4A38-9034-A74F6F02C726}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,11 +24,16 @@ Global
 		{8A62A665-B82E-45BF-A48B-7236FA50E7F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A62A665-B82E-45BF-A48B-7236FA50E7F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A62A665-B82E-45BF-A48B-7236FA50E7F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC6E7FE2-1165-4A38-9034-A74F6F02C726}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC6E7FE2-1165-4A38-9034-A74F6F02C726}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC6E7FE2-1165-4A38-9034-A74F6F02C726}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC6E7FE2-1165-4A38-9034-A74F6F02C726}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8A62A665-B82E-45BF-A48B-7236FA50E7F6} = {0B0A128D-1427-4AF3-B08A-66967335D359}
+		{CC6E7FE2-1165-4A38-9034-A74F6F02C726} = {0B0A128D-1427-4AF3-B08A-66967335D359}
 	EndGlobalSection
 EndGlobal

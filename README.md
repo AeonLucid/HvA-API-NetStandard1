@@ -1,4 +1,17 @@
-﻿using System;
+# HvA-API-NetStandard1
+
+A C# API to authenticate with and request data from the Hogeschool van Amsterdam.
+
+[Click here for the java version.](https://github.com/AeonLucid/HvA-API-Java)
+
+## Installation
+
+Soon.
+
+## Example
+
+```csharp
+using System;
 using System.Threading.Tasks;
 using HvA.API.Extensions;
 using HvA.API.Util;
@@ -36,3 +49,38 @@ namespace HvA.API.Demo
         }
     }
 }
+```
+
+Output:
+```
+Mon 19/09 14:30 - 19/09 16:10: FYS Coaching
+Tue 20/09 08:30 - 20/09 12:40: Project Fasten Your Seatbelts
+Tue 20/09 12:50 - 20/09 17:00: Project Fasten Your Seatbelts
+Wed 21/09 10:20 - 21/09 12:00: Audit 1
+Wed 21/09 12:00 - 21/09 14:30: Personal Skills
+Thu 22/09 08:30 - 22/09 11:50: Essential Skills Wiskunde
+Thu 22/09 12:00 - 22/09 13:40: Programming
+Thu 22/09 13:40 - 22/09 15:20: Programming
+Fri 23/09 08:30 - 23/09 11:00: User Interaction
+Press any key to exit.
+```
+
+## Implemented API calls
+
+- [x] signIn
+- [x] signOut
+- [x] getCurrentUser
+- [x] updateProfile
+- [x] getDomains
+- [x] getProgrammes
+- [x] getAbsentees
+- [ ] getAnnouncements (Response data unknown)
+- [x] getNews
+- [x] getLocations
+- [x] getStudylocations
+- [x] getStudylocationPage
+- [ ] getPeople (Server throws an exception, also broken in the official 'MijnHvApp')
+- [x] getMyTimeTable
+- [x] getSchedules
+- [x] otherSchedule
+- [x] getAZUrlsForEmployees
