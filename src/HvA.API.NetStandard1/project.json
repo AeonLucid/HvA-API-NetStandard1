@@ -1,6 +1,7 @@
 ﻿{
   "packOptions": {
-    "tags": [ "Hogeschool van Amsterdam", "Hogeschool van Amsterdam API", "HvA", "HvA API" ],
+	"summary": "A C# API to authenticate with and request data from the Hogeschool van Amsterdam.",
+    "tags": [ "Hogeschool van Amsterdam", "HvA", "API" ],
     "owners": [ "AeonLucid" ],
     "iconUrl": "http://i.imgur.com/7vJxPxu.png",
     "projectUrl": "https://github.com/AeonLucid/HvA-API-NetStandard1",

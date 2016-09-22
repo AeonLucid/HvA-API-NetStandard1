@@ -6,9 +6,16 @@ A C# API to authenticate with and request data from the Hogeschool van Amsterdam
 
 [Click here for the java version.](https://github.com/AeonLucid/HvA-API-Java)
 
-## Installation
+## Supported Platforms
 
-Soon.
+* .NET Standard 1.1 ([Specific platforms](https://github.com/dotnet/corefx/blob/master/Documentation/architecture/net-platform-standard.md#mapping-the-net-platform-standard-to-platforms))
+
+## Installation
+Installation is done via NuGet:
+
+    PM> Install-Package HvA.API.NetStandard1
+	
+https://www.nuget.org/packages/HvA.API.NetStandard1/
 
 ## Example
 
