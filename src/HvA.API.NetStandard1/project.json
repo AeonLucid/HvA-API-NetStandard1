@@ -1,6 +1,7 @@
 ﻿{
+  "version": "1.1.0", 
   "packOptions": {
-	"summary": "A C# API to authenticate with and request data from the Hogeschool van Amsterdam.",
+    "summary": "A C# API to authenticate with and request data from the Hogeschool van Amsterdam.",
     "tags": [ "Hogeschool van Amsterdam", "HvA", "API" ],
     "owners": [ "AeonLucid" ],
     "iconUrl": "http://i.imgur.com/7vJxPxu.png",
