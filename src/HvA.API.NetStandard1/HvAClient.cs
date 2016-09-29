@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using HvA.API.NetStandard1.Data;
 using HvA.API.NetStandard1.Util;
@@ -13,20 +14,23 @@ namespace HvA.API.NetStandard1
     {
         private readonly string _username;
         private readonly string _password;
-        
+
         private readonly HttpClient _httpClient;
+
+        private readonly Mutex _reauthenticateMutex;
 
         public HvAClient(string username, string password)
         {
             _username = username;
             _password = password;
-            
 
             _httpClient = new HttpClient(new HttpClientHandler
             {
                 CookieContainer = new CookieContainer()
             });
             _httpClient.DefaultRequestHeaders.UserAgent.ParseAdd(Configuration.UserAgent);
+
+            _reauthenticateMutex = new Mutex();
         }
 
         public bool IsAuthenticated { get; private set; }
@@ -37,11 +41,14 @@ namespace HvA.API.NetStandard1
         /// <returns>Determines whether authentication was successful.</returns>
         public async Task<bool> SignInAsync()
         {
-            var response = await PerformRequestAsync<AuthenticationUser>("/auth/signin", new FormUrlEncodedContent(new Dictionary<string, string>
-            {
-                {"username", _username},
-                {"password", _password}
-            }));
+            var response =
+                await
+                    PerformRequestAsync<AuthenticationUser>("/auth/signin",
+                        new FormUrlEncodedContent(new Dictionary<string, string>
+                        {
+                            {"username", _username},
+                            {"password", _password}
+                        }));
 
             return IsAuthenticated = !(response == null || !response.IsAuthenticated);
         }
@@ -53,6 +60,46 @@ namespace HvA.API.NetStandard1
         public async Task<bool> SignOutAsync()
         {
             return !IsAuthenticated || (IsAuthenticated = await PerformRequestAsync("/auth/signout"));
+        }
+
+        /// <summary>
+        ///     Reauthenticates until success! :)
+        /// </summary>
+        /// <returns>Returns a <see cref="Task"/>.</returns>
+        internal async Task ReauthenticateAsync()
+        {
+            _reauthenticateMutex.WaitOne();
+
+            if (!IsAuthenticated)
+            {
+                var tries = 0;
+
+                while (!IsAuthenticated)
+                {
+                    try
+                    {
+                        await SignInAsync();
+                    }
+                    catch (Exception)
+                    {
+                        // ignored
+                    }
+                    finally
+                    {
+                        if (!IsAuthenticated)
+                        {
+                            if (tries < 12)
+                                tries++;
+
+                            var sleepTime = tries * 5;
+
+                            await Task.Delay(TimeSpan.FromMilliseconds(sleepTime*1000));
+                        }
+                    }
+                }
+            }
+
+            _reauthenticateMutex.ReleaseMutex();
         }
 
         /// <summary>
@@ -249,6 +296,15 @@ namespace HvA.API.NetStandard1
         {
             using (var response = await _httpClient.GetAsync($"{Configuration.ApiUrl}{path}"))
             {
+                if (response.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    IsAuthenticated = false;
+
+                    await ReauthenticateAsync();
+
+                    return await PerformRequestAsync(path);
+                }
+
                 return response.IsSuccessStatusCode;
             }
         }
@@ -261,6 +317,15 @@ namespace HvA.API.NetStandard1
 
             using (var response = await responseTask)
             {
+                if (response.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    IsAuthenticated = false;
+
+                    await ReauthenticateAsync();
+
+                    return await PerformRequestAsync<T>(path, content);
+                }
+
                 return !response.IsSuccessStatusCode
                     ? default(T)
                     : JsonConvert.DeserializeObject<T>(await response.Content.ReadAsStringAsync());
