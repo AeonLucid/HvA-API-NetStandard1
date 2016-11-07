@@ -1,6 +1,4 @@
-# HvA-API-NetStandard1
-
-[![Build status](https://ci.appveyor.com/api/projects/status/8ci60nhsjxawhmbt?svg=true)](https://ci.appveyor.com/project/AeonLucid/hva-api-netstandard1)
+# HvA-API-NetStandard1 [![Build status](https://ci.appveyor.com/api/projects/status/8ci60nhsjxawhmbt?svg=true)](https://ci.appveyor.com/project/AeonLucid/hva-api-netstandard1)
 
 A C# API to authenticate with and request data from the Hogeschool van Amsterdam.
 
