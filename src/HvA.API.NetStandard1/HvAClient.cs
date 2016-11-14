@@ -68,38 +68,50 @@ namespace HvA.API.NetStandard1
         /// <returns>Returns a <see cref="Task"/>.</returns>
         internal async Task ReauthenticateAsync()
         {
-            _reauthenticateMutex.WaitOne();
-
-            if (!IsAuthenticated)
+            var isMutexMine = false;
+            
+            try
             {
-                var tries = 0;
+                isMutexMine = _reauthenticateMutex.WaitOne(2000);
 
-                while (!IsAuthenticated)
+                if (isMutexMine && !IsAuthenticated)
                 {
-                    try
+                    var tries = 0;
+
+                    while (!IsAuthenticated)
                     {
-                        await SignInAsync();
-                    }
-                    catch (Exception)
-                    {
-                        // ignored
-                    }
-                    finally
-                    {
-                        if (!IsAuthenticated)
+                        try
                         {
-                            if (tries < 12)
-                                tries++;
+                            await SignInAsync();
+                        }
+                        catch (Exception)
+                        {
+                            // ignored
+                        }
+                        finally
+                        {
+                            if (!IsAuthenticated)
+                            {
+                                if (tries < 12)
+                                    tries++;
 
-                            var sleepTime = tries * 5;
+                                var sleepTime = tries*5;
 
-                            await Task.Delay(TimeSpan.FromMilliseconds(sleepTime*1000));
+                                await Task.Delay(TimeSpan.FromMilliseconds(sleepTime*1000));
+                            }
                         }
                     }
                 }
-            }
 
-            _reauthenticateMutex.ReleaseMutex();
+                _reauthenticateMutex.ReleaseMutex();
+            }
+            finally
+            {
+                if (_reauthenticateMutex != null && isMutexMine)
+                {
+                    _reauthenticateMutex.ReleaseMutex();
+                }
+            }
         }
 
         /// <summary>
