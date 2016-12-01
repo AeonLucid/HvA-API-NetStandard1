@@ -102,12 +102,10 @@ namespace HvA.API.NetStandard1
                         }
                     }
                 }
-
-                _reauthenticateMutex.ReleaseMutex();
             }
             finally
             {
-                if (_reauthenticateMutex != null && isMutexMine)
+                if (isMutexMine)
                 {
                     _reauthenticateMutex.ReleaseMutex();
                 }
